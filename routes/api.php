@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Post\CreateSubjectController;
 use App\Http\Controllers\Admin\Post\CreateThemeController;
 use App\Http\Controllers\GetController;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::prefix('admin')->group(function() {
         Route::post('create/theme', [CreateThemeController::class, 'create']);
+        Route::post('create/subject', [CreateSubjectController::class, 'create']);
     });
 });
 
