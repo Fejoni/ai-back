@@ -24,7 +24,15 @@ class SubjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', 'max:255'],
+            'theme_id' => ['required', 'max:255']
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'title.required' => 'Обязательно заполните поле',
+            'title.max' => 'Максимальная длина 255 символов'
         ];
     }
 }

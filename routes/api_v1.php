@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Admin\Post\CreateSubjectController;
-use App\Http\Controllers\Admin\Post\CreateThemeController;
-use App\Http\Controllers\GetController;
+use App\Http\Controllers\Admin\Post\Subject\CreateSubjectController;
+use App\Http\Controllers\Admin\Post\Theme\CreateThemeController;
+use App\Http\Controllers\Site\Aside\GetAsideController;
+use App\Http\Controllers\Site\Test\GetController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,10 +27,14 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::get('get', [GetController::class, 'get']);
 
+    Route::prefix('forum')->group(function () {
+        Route::get('aside/get', [GetAsideController::class, 'get']);
+    });
+
     Route::prefix('admin')->group(function() {
         Route::post('create/theme', [CreateThemeController::class, 'create']);
         Route::post('create/subject', [CreateSubjectController::class, 'create']);
     });
 });
+Route::get('test/aside', [\App\Http\Controllers\Site\Test\TestController::class, 'test']);
 
-//Route::get('get', [\App\Http\Controllers\GetController::class, 'get']);

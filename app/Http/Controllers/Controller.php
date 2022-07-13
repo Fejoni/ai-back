@@ -11,8 +11,11 @@ use Illuminate\Routing\Controller as BaseController;
  * @OA\OpenApi(
  *     @OA\Info(
  *         version="1.0",
- *         title="Todo List Api",
- *         description="Demo Todo List Api",
+ *         title="Assistant IT",
+ *         description="
+ *              Основная информация:
+ *              Создатель документации: Егор Лисица
+ *              Создана специально для: Димы Логунова",
  *     )
  * )
  */

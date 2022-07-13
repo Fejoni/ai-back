@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->foreignId('theme_id')->constrained()->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

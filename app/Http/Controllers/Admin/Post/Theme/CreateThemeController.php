@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Post;
+namespace App\Http\Controllers\Admin\Post\Theme;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\ThemeRequest;
 use App\Models\Admin\Post\Theme;
-use Illuminate\Http\Request;
 use function response;
 
 class CreateThemeController extends Controller
@@ -15,6 +14,7 @@ class CreateThemeController extends Controller
      * @OA\Post (
      *     path="/api/admin/create/theme",
      *     tags={"Theme"},
+     *     description="Создает тему для боковой панели навигации",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -60,6 +60,6 @@ class CreateThemeController extends Controller
            'title' => $request->input('title')
         ]);
 
-        return response()->json('Успешно создалась тема');
+        return response()->json('success');
     }
 }

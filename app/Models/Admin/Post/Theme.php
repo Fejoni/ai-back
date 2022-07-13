@@ -9,10 +9,15 @@ class Theme extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title'];
 
     public function subjects()
     {
         return $this->hasMany(Subject::class);
     }
+
+    protected $fillable = ['title'];
+
+    public $timestamps = false;
+
+
 }

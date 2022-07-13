@@ -1,18 +1,75 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Todo List Api",
-        "description": "Demo Todo List Api",
+        "title": "Assistant IT",
+        "description": "\n *              Основная информация:\n *              Создатель документации: Егор Лисица\n *              Создана специально для: Димы Логунова",
         "version": "1.0"
     },
     "paths": {
+        "/api/forum/aside/get": {
+            "get": {
+                "tags": [
+                    "Aside"
+                ],
+                "summary": "Get Aside",
+                "description": "Возвращает ответ с темами и тематиками Aside (Боковая меню слево)",
+                "operationId": "21bbd0e41586ff6fa50c420d1781db61",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "title"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "fail"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/admin/create/theme": {
             "post": {
                 "tags": [
                     "Theme"
                 ],
                 "summary": "Create Theme",
-                "operationId": "83c643c55b89182b2ad0f6616d8bde07",
+                "description": "Создает тему для боковой панели навигации",
+                "operationId": "0e1f16f50b4264ac1eed1240074c6ef7",
                 "requestBody": {
                     "content": {
                         "application/json": {
