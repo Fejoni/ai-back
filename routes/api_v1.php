@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Admin\Post\Subject\CreateSubjectController;
-use App\Http\Controllers\Admin\Post\Subject\DeleteSubjectController;
-use App\Http\Controllers\Admin\Post\Subject\UpdateSubjectController;
-use App\Http\Controllers\Admin\Post\Theme\CreateThemeController;
-use App\Http\Controllers\Admin\Post\Theme\DeleteThemeController;
-use App\Http\Controllers\Admin\Post\Theme\UpdateThemeController;
-use App\Http\Controllers\Site\Aside\GetAsideController;
-use App\Http\Controllers\Site\Test\GetController;
+use App\Http\Controllers\Api\v1\Admin\Post\Subject\CreateSubjectController;
+use App\Http\Controllers\Api\v1\Admin\Post\Subject\DeleteSubjectController;
+use App\Http\Controllers\Api\v1\Admin\Post\Subject\UpdateSubjectController;
+use App\Http\Controllers\Api\v1\Admin\Post\Theme\CreateThemeController;
+use App\Http\Controllers\Api\v1\Admin\Post\Theme\DeleteThemeController;
+use App\Http\Controllers\Api\v1\Admin\Post\Theme\UpdateThemeController;
+use App\Http\Controllers\Api\v1\Site\Aside\GetAsideController;
+use App\Http\Controllers\Api\v1\Site\Test\GetController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -47,17 +47,17 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         });
 
         Route::prefix('update')->group(function () {
-            Route::post('theme', [UpdateThemeController::class, 'update']);
-            Route::post('subject', [UpdateSubjectController::class, 'update']);
+            Route::put('theme', [UpdateThemeController::class, 'update']);
+            Route::put('subject', [UpdateSubjectController::class, 'update']);
         });
 
         Route::prefix('delete')->group(function () {
-            Route::post('theme', [DeleteThemeController::class, 'delete']);
-            Route::post('subject', [DeleteSubjectController::class, 'delete']);
+            Route::delete('theme', [DeleteThemeController::class, 'delete']);
+            Route::delete('subject', [DeleteSubjectController::class, 'delete']);
         });
     });
 });
-Route::get('test/aside', [\App\Http\Controllers\Site\Test\TestController::class, 'test']);
+Route::get('test/aside', [\App\Http\Controllers\Api\v1\Site\Test\TestController::class, 'test']);
 
 
 

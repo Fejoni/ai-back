@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\Site\HomeController::class, 'index'])->name('home');
+Route::get('/home', [\App\Http\Controllers\Api\v1\Site\HomeController::class, 'index'])->name('home');

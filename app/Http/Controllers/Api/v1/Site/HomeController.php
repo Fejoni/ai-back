@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\Api\v1\Site;
 
 use App\Http\Controllers\Controller;
 use function view;

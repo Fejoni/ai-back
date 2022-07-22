@@ -13,7 +13,7 @@
                 ],
                 "summary": "Create Subject",
                 "description": "Создает тематику для боковой панели навигации",
-                "operationId": "4b2bce3e2f2cdde8712aedc5056672ee",
+                "operationId": "e54b763308e6b37d371db6d9dbdb3d78",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -48,13 +48,13 @@
             }
         },
         "/api/admin/delete/subject": {
-            "post": {
+            "delete": {
                 "tags": [
                     "Subject"
                 ],
                 "summary": "Delete Subject",
                 "description": "Удаляет тематику для боковой панели навигации",
-                "operationId": "8c020bb9f318e65b81fb88df3e69e955",
+                "operationId": "a05b91f006958c0c2cc53791b0755637",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -85,13 +85,13 @@
             }
         },
         "/api/admin/update/subject": {
-            "post": {
+            "put": {
                 "tags": [
                     "Subject"
                 ],
                 "summary": "Update Subject",
                 "description": "Обновляет тематику для боковой панели навигации",
-                "operationId": "6f2a68eed5b401db2e9a627d2ad0a355",
+                "operationId": "001aa413e6dddbba801db5f2625a8bc6",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -140,7 +140,7 @@
                 ],
                 "summary": "Create Theme",
                 "description": "Создает тему для боковой панели навигации",
-                "operationId": "0e1f16f50b4264ac1eed1240074c6ef7",
+                "operationId": "fb08ad6999293fc895b738e3723baeab",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -188,13 +188,13 @@
             }
         },
         "/api/admin/delete/theme": {
-            "post": {
+            "delete": {
                 "tags": [
                     "Theme"
                 ],
                 "summary": "Delete Theme",
                 "description": "Удаляет тему для боковой панели навигации",
-                "operationId": "431048fc8fbd60cca642b706162c7599",
+                "operationId": "6eeeefa6d667e8b2ffc278a9f170ce2d",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -225,13 +225,13 @@
             }
         },
         "/api/admin/update/theme": {
-            "post": {
+            "put": {
                 "tags": [
                     "Theme"
                 ],
                 "summary": "Update Theme",
                 "description": "Обновляет тему для боковой панели навигации",
-                "operationId": "92f113db3b7bb949406ecabdb38029d7",
+                "operationId": "5b8daf08cbac8be9b700f9209316f42e",
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -272,7 +272,7 @@
                 ],
                 "summary": "Get Aside",
                 "description": "Возвращает ответ с темами и тематиками Aside (Боковая меню слево)",
-                "operationId": "1b8b0635bb9a7d4bac897dea8b563e1a",
+                "operationId": "9d65c329b49cc544f032dff06c0bcfe7",
                 "responses": {
                     "200": {
                         "description": "success",

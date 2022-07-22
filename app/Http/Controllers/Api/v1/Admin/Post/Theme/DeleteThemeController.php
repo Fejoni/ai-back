@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Post\Theme;
+namespace App\Http\Controllers\Api\v1\Admin\Post\Theme;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\Theme\DeleteThemeRequest;
 use App\Models\Admin\Post\Theme;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
+use function response;
 
 class DeleteThemeController extends Controller
 {
     /**
      * Delete Theme
-     * @OA\Post (
+     * @OA\Delete (
      *     path="/api/admin/delete/theme",
      *     tags={"Theme"},
      *     description="Удаляет тему для боковой панели навигации",
@@ -43,6 +45,6 @@ class DeleteThemeController extends Controller
 
         Theme::where('title', $request->input('title'))->delete();
 
-        return response()->json('success');
+        return response(null, ResponseAlias::HTTP_NO_CONTENT);
     }
 }

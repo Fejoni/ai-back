@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Post\Subject;
+namespace App\Http\Controllers\Api\v1\Admin\Post\Subject;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\Subject\UpdateSubjectRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
+use function response;
 
 class UpdateSubjectController extends Controller
 {
     /**
      * Update Subject
-     * @OA\Post (
+     * @OA\PUT (
      *     path="/api/admin/update/subject",
      *     tags={"Subject"},
      *     description="Обновляет тематику для боковой панели навигации",
@@ -64,6 +65,6 @@ class UpdateSubjectController extends Controller
                 'theme_id' => $request->input('theme_idUpdate')
             ]);
 
-        return response()->json('success');
+        return response(null, ResponseAlias::HTTP_NO_CONTENT);
     }
 }

@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Post\Subject;
+namespace App\Http\Controllers\Api\v1\Admin\Post\Subject;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\Subject\DeleteSubjectRequest;
 use App\Models\Admin\Post\Subject;
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
+use function response;
 
 class DeleteSubjectController extends Controller
 {
     /**
      * Delete Subject
-     * @OA\Post (
+     * @OA\Delete (
      *     path="/api/admin/delete/subject",
      *     tags={"Subject"},
      *     description="Удаляет тематику для боковой панели навигации",
@@ -45,6 +46,6 @@ class DeleteSubjectController extends Controller
 
         Subject::where('title', $request->input('title'))->delete();
 
-        return response()->json('success');
+        return response(null, ResponseAlias::HTTP_NO_CONTENT);
     }
 }

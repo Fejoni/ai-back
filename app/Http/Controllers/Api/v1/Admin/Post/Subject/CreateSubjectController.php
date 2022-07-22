@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Post\Subject;
+namespace App\Http\Controllers\Api\v1\Admin\Post\Subject;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\Subject\CreateSubjectRequest;
 use App\Models\Admin\Post\Subject;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
+use function response;
 
 class CreateSubjectController extends Controller
 {
@@ -52,6 +54,6 @@ class CreateSubjectController extends Controller
             'theme_id' => $request->input('theme_id'),
         ]);
 
-        return response()->json('success');
+        return response(null, ResponseAlias::HTTP_NO_CONTENT);
     }
 }

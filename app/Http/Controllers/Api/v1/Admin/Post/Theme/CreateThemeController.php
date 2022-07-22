@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Post\Theme;
+namespace App\Http\Controllers\Api\v1\Admin\Post\Theme;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\Theme\CreateThemeRequest;
 use App\Models\Admin\Post\Theme;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use function response;
 
 class CreateThemeController extends Controller
@@ -45,12 +46,8 @@ class CreateThemeController extends Controller
 
     public function create(CreateThemeRequest $request)
     {
-        $validatedData = $request->validated();
+        Theme::create($request->validated());
 
-        Theme::create([
-           'title' => $request->input('title')
-        ]);
-
-        return response()->json('success');
+        return response(null, ResponseAlias::HTTP_NO_CONTENT);
     }
 }

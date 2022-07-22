@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Site\Aside;
+namespace App\Http\Controllers\Api\v1\Site\Aside;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Admin\Post\ThemeResource;
