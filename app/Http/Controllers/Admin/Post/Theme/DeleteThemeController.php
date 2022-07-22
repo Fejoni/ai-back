@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Admin\Post\Theme;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Post\Theme\CreateThemeRequest;
+use App\Http\Requests\Admin\Post\Theme\DeleteThemeRequest;
 use App\Models\Admin\Post\Theme;
-use function response;
 
-class CreateThemeController extends Controller
+class DeleteThemeController extends Controller
 {
     /**
-     * Create Theme
+     * Delete Theme
      * @OA\Post (
-     *     path="/api/admin/create/theme",
+     *     path="/api/admin/delete/theme",
      *     tags={"Theme"},
-     *     description="Создает тему для боковой панели навигации",
+     *     description="Удаляет тему для боковой панели навигации",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -35,21 +34,14 @@ class CreateThemeController extends Controller
      *      @OA\Response(
      *          response=200,
      *          description="success",
-     *          @OA\JsonContent(
-     *              @OA\Property(property="id", type="number", example=1),
-     *              @OA\Property(property="title", type="string", example="title"),
-     *          )
      *      ),
      * )
      */
-
-    public function create(CreateThemeRequest $request)
+    public function delete(DeleteThemeRequest $request)
     {
         $validatedData = $request->validated();
 
-        Theme::create([
-           'title' => $request->input('title')
-        ]);
+        Theme::where('title', $request->input('title'))->delete();
 
         return response()->json('success');
     }

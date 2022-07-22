@@ -2,62 +2,133 @@
     "openapi": "3.0.0",
     "info": {
         "title": "Assistant IT",
-        "description": "\n *              Основная информация:\n *              Создатель документации: Егор Лисица\n *              Создана специально для: Димы Логунова",
+        "description": "\r\n *              Основная информация:\r\n *              Создатель документации: Егор Лисица\r\n *              Создана специально для: Димы Логунова",
         "version": "1.0"
     },
     "paths": {
-        "/api/forum/aside/get": {
-            "get": {
+        "/api/admin/create/subject": {
+            "post": {
                 "tags": [
-                    "Aside"
+                    "Subject"
                 ],
-                "summary": "Get Aside",
-                "description": "Возвращает ответ с темами и тематиками Aside (Боковая меню слево)",
-                "operationId": "21bbd0e41586ff6fa50c420d1781db61",
+                "summary": "Create Subject",
+                "description": "Создает тематику для боковой панели навигации",
+                "operationId": "4b2bce3e2f2cdde8712aedc5056672ee",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "theme_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "Laravel",
+                                    "theme_id": "1"
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
-                        "description": "success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "id": {
-                                            "type": "number",
-                                            "example": 1
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/admin/delete/subject": {
+            "post": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Delete Subject",
+                "description": "Удаляет тематику для боковой панели навигации",
+                "operationId": "8c020bb9f318e65b81fb88df3e69e955",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            }
                                         },
-                                        "title": {
-                                            "type": "string",
-                                            "example": "title"
-                                        },
-                                        "updated_at": {
-                                            "type": "string",
-                                            "example": "2021-12-11T09:25:53.000000Z"
-                                        },
-                                        "created_at": {
-                                            "type": "string",
-                                            "example": "2021-12-11T09:25:53.000000Z"
-                                        }
-                                    },
-                                    "type": "object"
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "Laravel"
                                 }
                             }
                         }
-                    },
-                    "400": {
-                        "description": "invalid",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "msg": {
-                                            "type": "string",
-                                            "example": "fail"
-                                        }
-                                    },
-                                    "type": "object"
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/admin/update/subject": {
+            "post": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Update Subject",
+                "description": "Обновляет тематику для боковой панели навигации",
+                "operationId": "6f2a68eed5b401db2e9a627d2ad0a355",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "titleUpdate": {
+                                                "type": "string"
+                                            },
+                                            "theme_id": {
+                                                "type": "integer"
+                                            },
+                                            "theme_idUpdate": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "Laravel",
+                                    "titleUpdate": "Vue",
+                                    "theme_id": "1",
+                                    "theme_idUpdate": "3"
                                 }
                             }
                         }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
                     }
                 }
             }
@@ -106,33 +177,128 @@
                                         "title": {
                                             "type": "string",
                                             "example": "title"
-                                        },
-                                        "updated_at": {
-                                            "type": "string",
-                                            "example": "2021-12-11T09:25:53.000000Z"
-                                        },
-                                        "created_at": {
-                                            "type": "string",
-                                            "example": "2021-12-11T09:25:53.000000Z"
                                         }
                                     },
                                     "type": "object"
                                 }
                             }
                         }
-                    },
-                    "400": {
-                        "description": "invalid",
+                    }
+                }
+            }
+        },
+        "/api/admin/delete/theme": {
+            "post": {
+                "tags": [
+                    "Theme"
+                ],
+                "summary": "Delete Theme",
+                "description": "Удаляет тему для боковой панели навигации",
+                "operationId": "431048fc8fbd60cca642b706162c7599",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "Языки программирования"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/admin/update/theme": {
+            "post": {
+                "tags": [
+                    "Theme"
+                ],
+                "summary": "Update Theme",
+                "description": "Обновляет тему для боковой панели навигации",
+                "operationId": "92f113db3b7bb949406ecabdb38029d7",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "titleUpdate": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "Языки программирования",
+                                    "titleUpdate": "Laravel"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/forum/aside/get": {
+            "get": {
+                "tags": [
+                    "Aside"
+                ],
+                "summary": "Get Aside",
+                "description": "Возвращает ответ с темами и тематиками Aside (Боковая меню слево)",
+                "operationId": "1b8b0635bb9a7d4bac897dea8b563e1a",
+                "responses": {
+                    "200": {
+                        "description": "success",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "properties": {
-                                        "msg": {
-                                            "type": "string",
-                                            "example": "fail"
+                                        "id": {
+                                            "type": "number"
+                                        },
+                                        "title": {
+                                            "type": "string"
+                                        },
+                                        "subject": {
+                                            "type": "string"
                                         }
                                     },
                                     "type": "object"
+                                },
+                                "example": {
+                                    "id": "1",
+                                    "title": "Фреймворки",
+                                    "subjects": {
+                                        "id": "7",
+                                        "title": "Laravel"
+                                    }
                                 }
                             }
                         }

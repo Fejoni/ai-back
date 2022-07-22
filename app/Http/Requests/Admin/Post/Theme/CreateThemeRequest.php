@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Post;
+namespace App\Http\Requests\Admin\Post\Theme;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ThemeRequest extends FormRequest
+class CreateThemeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,16 @@ class ThemeRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'max:255']
+            'title' => ['required', 'max:255', 'alpha'],
         ];
     }
 
     public function messages()
     {
         return [
-            'title.required' => 'Обязательно заполните поле',
-            'title.max' => 'Максимальная длина 255 символов'
+            'title.required' => 'Обязательно заполните поле | title',
+            'title.max' => 'Максимальная длина 255 символов | title',
+            'title.alpha' => 'Поле должно состоять полностью из букв | title',
         ];
     }
 }

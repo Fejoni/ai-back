@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Admin\Post\Subject;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Post\Subject\CreateSubjectRequest;
+use App\Http\Requests\Admin\Post\Subject\DeleteSubjectRequest;
 use App\Models\Admin\Post\Subject;
+use Illuminate\Http\Request;
 
-class CreateSubjectController extends Controller
+class DeleteSubjectController extends Controller
 {
     /**
-     * Create Subject
+     * Delete Subject
      * @OA\Post (
-     *     path="/api/admin/create/subject",
+     *     path="/api/admin/delete/subject",
      *     tags={"Subject"},
-     *     description="Создает тематику для боковой панели навигации",
+     *     description="Удаляет тематику для боковой панели навигации",
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -23,15 +24,10 @@ class CreateSubjectController extends Controller
      *                      @OA\Property(
      *                          property="title",
      *                          type="string"
-     *                      ),
-     *                      @OA\Property(
-     *                          property="theme_id",
-     *                          type="int"
      *                      )
      *                 ),
      *                 example={
-     *                     "title":"Laravel",
-     *                     "theme_id":"1"
+     *                     "title":"Laravel"
      *                }
      *             )
      *         )
@@ -43,14 +39,11 @@ class CreateSubjectController extends Controller
      * )
      */
 
-    public function create(CreateSubjectRequest $request)
+    public function delete(DeleteSubjectRequest $request)
     {
         $validatedData = $request->validated();
 
-        Subject::create([
-            'title' => $request->input('title'),
-            'theme_id' => $request->input('theme_id'),
-        ]);
+        Subject::where('title', $request->input('title'))->delete();
 
         return response()->json('success');
     }

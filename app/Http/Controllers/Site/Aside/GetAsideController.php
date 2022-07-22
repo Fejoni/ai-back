@@ -18,17 +18,17 @@ class GetAsideController extends Controller
      *          response=200,
      *          description="success",
      *          @OA\JsonContent(
-     *              @OA\Property(property="id", type="number", example=1),
-     *              @OA\Property(property="title", type="string", example="title"),
-     *              @OA\Property(property="updated_at", type="string", example="2021-12-11T09:25:53.000000Z"),
-     *              @OA\Property(property="created_at", type="string", example="2021-12-11T09:25:53.000000Z"),
-     *          )
-     *      ),
-     *      @OA\Response(
-     *          response=400,
-     *          description="invalid",
-     *          @OA\JsonContent(
-     *              @OA\Property(property="msg", type="string", example="fail"),
+     *              @OA\Property(property="id", type="number"),
+     *              @OA\Property(property="title", type="string"),
+     *              @OA\Property(property="subject", type="string"),
+     *              example={
+     *                     "id":"1",
+     *                     "title":"Фреймворки",
+     *                     "subjects":{
+     *                      "id":"7",
+     *                      "title":"Laravel",
+     *                      },
+     *                }
      *          )
      *      )
      * )
