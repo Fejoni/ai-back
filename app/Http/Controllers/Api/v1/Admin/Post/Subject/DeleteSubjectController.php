@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api\v1\Admin\Post\Subject;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\Subject\DeleteSubjectRequest;
 use App\Models\Admin\Post\Subject;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\Response;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use function response;
 
@@ -40,7 +43,7 @@ class DeleteSubjectController extends Controller
      * )
      */
 
-    public function delete(DeleteSubjectRequest $request)
+    public function delete(DeleteSubjectRequest $request): Response|Application|ResponseFactory
     {
         $validatedData = $request->validated();
 

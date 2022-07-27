@@ -25,7 +25,7 @@ class UpdateSubjectRequest extends FormRequest
     {
         return [
             'title' => ['required', 'max:255', 'alpha', 'exists:subjects,title'],
-            'theme_id' => ['required', 'max:255', 'Integer', 'exists:subjects,id'],
+            'theme_id' => ['required', 'max:255', 'Integer', 'exists:themes,id'],
             'titleUpdate' => ['required', 'max:255', 'alpha'],
             'theme_idUpdate' => ['required', 'max:255', 'Integer'],
         ];
@@ -44,6 +44,7 @@ class UpdateSubjectRequest extends FormRequest
             'theme_id.max' => 'Максимальная длина 255 символов | theme_id',
             'theme_id.Integer' => 'Поле должно быть целым числом | theme_id',
             'theme_id.required' => 'Обязательно заполните поле | theme_id',
+            'theme_id.exists' => 'Данного поля не существует | theme_id',
             'theme_idUpdate.required' => 'Обязательно заполните поле | theme_idUpdate',
             'theme_idUpdate.max' => 'Максимальная длина 255 символов | theme_idUpdate',
             'theme_idUpdate.Integer' => 'Поле должно быть целым числом | theme_idUpdate',

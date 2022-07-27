@@ -1,13 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\v1\Admin\Post\Subject\CreateSubjectController;
-use App\Http\Controllers\Api\v1\Admin\Post\Subject\DeleteSubjectController;
-use App\Http\Controllers\Api\v1\Admin\Post\Subject\UpdateSubjectController;
-use App\Http\Controllers\Api\v1\Admin\Post\Theme\CreateThemeController;
-use App\Http\Controllers\Api\v1\Admin\Post\Theme\DeleteThemeController;
-use App\Http\Controllers\Api\v1\Admin\Post\Theme\UpdateThemeController;
+use App\Http\Controllers\Api\v1\Admin\Post\Subject\{CreateSubjectController, UpdateSubjectController, DeleteSubjectController};
+use App\Http\Controllers\Api\v1\Admin\Post\Theme\{CreateThemeController, DeleteThemeController, UpdateThemeController};
 use App\Http\Controllers\Api\v1\Site\Aside\GetAsideController;
-use App\Http\Controllers\Api\v1\Site\Test\GetController;
+use App\Http\Controllers\Api\v1\Site\Post\CreatePostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,35 +25,36 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Для теста
 Route::prefix('test')->group(function () {
-    Route::post('theme', [DeleteThemeController::class, 'delete']);
+
 });
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
 
-    Route::get('get', [GetController::class, 'get']); // Тестовый
+    Route::prefix('site')->group(function () {
 
-    Route::prefix('forum')->group(function () {
-        Route::get('aside/get', [GetAsideController::class, 'get']);
+        Route::prefix('aside')->group(function() {
+            Route::get('get', [GetAsideController::class, 'get']);
+        });
+
+        Route::prefix('post')->group(function() {
+            Route::post('create', [CreatePostController::class. 'create']);
+        });
     });
 
     Route::prefix('admin')->group(function() {
-        Route::prefix('create')->group(function () {
-            Route::post('theme', [CreateThemeController::class, 'create']);
-            Route::post('subject', [CreateSubjectController::class, 'create']);
+        Route::prefix('theme')->group(function () {
+            Route::post('create', [CreateThemeController::class, 'create']);
+            Route::put('update', [UpdateThemeController::class, 'update']);
+            Route::delete('delete', [DeleteThemeController::class, 'delete']);
         });
 
-        Route::prefix('update')->group(function () {
-            Route::put('theme', [UpdateThemeController::class, 'update']);
-            Route::put('subject', [UpdateSubjectController::class, 'update']);
-        });
+        Route::prefix('subject')->group(function () {
+            Route::post('create', [CreateSubjectController::class, 'create']);
+            Route::put('update', [UpdateSubjectController::class, 'update']);
+            Route::delete('delete', [DeleteSubjectController::class, 'delete']);
 
-        Route::prefix('delete')->group(function () {
-            Route::delete('theme', [DeleteThemeController::class, 'delete']);
-            Route::delete('subject', [DeleteSubjectController::class, 'delete']);
         });
     });
 });
-Route::get('test/aside', [\App\Http\Controllers\Api\v1\Site\Test\TestController::class, 'test']);
-
 
 

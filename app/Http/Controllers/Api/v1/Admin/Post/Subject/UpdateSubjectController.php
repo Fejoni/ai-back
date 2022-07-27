@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Api\v1\Admin\Post\Subject;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\Subject\UpdateSubjectRequest;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use function response;
@@ -55,14 +58,14 @@ class UpdateSubjectController extends Controller
      * )
      */
 
-    public function update(UpdateSubjectRequest $request)
+    public function update(UpdateSubjectRequest $request): Response|Application|ResponseFactory
     {
         $validatedData = $request->validated();
 
         DB::table('subjects')->where('title', '=', $request->input('title'))->update(
             [
                 'title' => $request->input('titleUpdate'),
-                'theme_id' => $request->input('theme_idUpdate')
+                'theme_id' => $request->input('tФheme_idUpdate')
             ]);
 
         return response(null, ResponseAlias::HTTP_NO_CONTENT);

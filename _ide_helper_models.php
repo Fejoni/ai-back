@@ -46,6 +46,34 @@ namespace App\Models\Admin\Post{
 	class Theme extends \Eloquent {}
 }
 
+namespace App\Models\Site\Post{
+/**
+ * App\Models\Site\Post\Post
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property int $subject_id
+ * @property string $title
+ * @property string $body
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Admin\Post\Subject $subject
+ * @property-read \App\Models\User $user
+ * @method static \Database\Factories\Site\Post\PostFactory factory(...$parameters)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereSubjectId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Post whereUserId($value)
+ */
+	class Post extends \Eloquent {}
+}
+
 namespace App\Models{
 /**
  * App\Models\User

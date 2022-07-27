@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Api\v1\Site\Aside;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Admin\Post\ThemeResource;
 use App\Models\Admin\Post\Theme;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class GetAsideController extends Controller
 {
     /**
      * Get Aside
      * @OA\Get (
-     *     path="/api/forum/aside/get",
+     *     path="/api/site/aside/get",
      *     tags={"Aside"},
      *     description="Возвращает ответ с темами и тематиками Aside (Боковая меню слево)",
      *      @OA\Response(
@@ -34,7 +35,7 @@ class GetAsideController extends Controller
      * )
      */
 
-    public function get()
+    public function get(): AnonymousResourceCollection
     {
         return ThemeResource::collection(Theme::with('subjects')->get());
     }
