@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Site\Post\{ListPostController, ViewPostController, CreatePostController};
 use App\Http\Controllers\Api\v1\Admin\Post\Subject\{CreateSubjectController, UpdateSubjectController, DeleteSubjectController};
 use App\Http\Controllers\Api\v1\Admin\Post\Theme\{CreateThemeController, DeleteThemeController, UpdateThemeController};
 use App\Http\Controllers\Api\v1\Site\Aside\GetAsideController;
-use App\Http\Controllers\Api\v1\Site\Post\CreatePostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Для теста
 Route::prefix('test')->group(function () {
-
 });
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
@@ -37,7 +36,9 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         });
 
         Route::prefix('post')->group(function() {
-            Route::post('create', [CreatePostController::class. 'create']);
+            Route::post('create', [CreatePostController::class, 'create']);
+            Route::get('list', [ListPostController::class, 'list']);
+            Route::get('view/{id}', [ViewPostController::class, 'view']);
         });
     });
 
