@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Admin\User;
+namespace App\Http\Controllers\Api\v1\Site\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\User\FindUserRequest;
+use App\Http\Requests\Site\User\FindUserRequest;
 use App\Http\Resources\Site\User\UserResource;
-use App\Services\Admin\User\FindUserService;
-use App\Services\UserService;
-use Illuminate\Http\Request;
+use App\Services\User\UserService;
 
 
-class AdminUserController extends Controller
+class UserController extends Controller
 {
 
     private UserService $userService;
@@ -35,6 +33,7 @@ class AdminUserController extends Controller
 
     public function getDataUser($id)
     {
-        return $user = $this->userService->getDataUser($id);
+        return $this->userService->getDataUser($id);
     }
+
 }

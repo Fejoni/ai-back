@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Requests\Admin\User;
+namespace App\Http\Requests\Site\User;
 
 use Illuminate\Foundation\Http\FormRequest;
+use function auth;
 
 class FindUserRequest extends FormRequest
 {

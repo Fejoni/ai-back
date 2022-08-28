@@ -1,10 +1,13 @@
 <?php
 
-use App\Http\Controllers\Api\v1\Admin\User\AdminUserController;
-use App\Http\Controllers\Api\v1\Site\Post\{ListPostController, ViewPostController, CreatePostController};
-use App\Http\Controllers\Api\v1\Admin\Post\Subject\{CreateSubjectController, UpdateSubjectController, DeleteSubjectController};
+use App\Http\Controllers\Api\v1\Site\User\UserContactController;
+use App\Http\Controllers\Api\v1\Admin\Post\Subject\{CreateSubjectController,
+    DeleteSubjectController,
+    UpdateSubjectController};
 use App\Http\Controllers\Api\v1\Admin\Post\Theme\{CreateThemeController, DeleteThemeController, UpdateThemeController};
 use App\Http\Controllers\Api\v1\Site\Aside\GetAsideController;
+use App\Http\Controllers\Api\v1\Site\Post\{CreatePostController, ListPostController, ViewPostController};
+use App\Http\Controllers\Api\v1\Site\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +44,16 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
             Route::get('list', [ListPostController::class, 'list']);
             Route::get('view/{id}', [ViewPostController::class, 'view'])->whereNumber('id');
         });
+
+        Route::prefix('user')->group(function () {
+            Route::prefix('find')->group(function () {
+                Route::post('userByName', [UserController::class, 'findUserByName']);
+            });
+            Route::get('data/{id}', [UserController::class, 'getDataUser']);
+            Route::prefix('contacts')->group(function (){
+                Route::post('create', [UserContactController::class, 'createContactUser']);
+            });
+        });
     });
 
     Route::prefix('admin')->group(function() {
@@ -57,12 +70,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
         });
 
-        Route::prefix('user')->group(function () {
-            Route::prefix('find')->group(function () {
-                Route::post('userByName', [AdminUserController::class, 'findUserByName']);
-            });
-            Route::get('data/{id}', [AdminUserController::class, 'getDataUser']);
-        });
+
     });
 });
 
