@@ -18,8 +18,9 @@ class ListPostResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => Str::limit($this->title, 50),
-            'body' => $this->body,
+            'title' => Str::limit($this->title, 90),
+            'created_at_year' => Str::beforeLast(\str($this->created_at), ' '),
+            'created_at_time' => Str::after(\str($this->created_at), ' '),
             'subject' => SubjectResource::make($this->subject), // make - Т.к 1 объект
             'user' => $this->user->name,
         ];
