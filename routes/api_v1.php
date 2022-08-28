@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
             Route::prefix('find')->group(function () {
                 Route::post('userByName', [AdminUserController::class, 'findUserByName']);
             });
+            Route::get('data/{id}', [AdminUserController::class, 'getDataUser']);
         });
     });
 });

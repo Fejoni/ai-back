@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Services\Admin\User;
+namespace App\Services;
 
+use App\Http\Resources\Site\User\UserResource;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-class FindUserService
+class UserService
 {
     /**
      * @param $data
@@ -19,5 +20,12 @@ class FindUserService
         $user = User::query()->where('name', $data['name'])->first();
 
         return $user;
+    }
+
+    public function getDataUser($id) {
+
+        $user = User::query()->where('id', $id)->first();
+
+        return UserResource::make($user);
     }
 }
