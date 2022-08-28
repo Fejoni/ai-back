@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Admin\User\AdminUserController;
 use App\Http\Controllers\Api\v1\Site\Post\{ListPostController, ViewPostController, CreatePostController};
 use App\Http\Controllers\Api\v1\Admin\Post\Subject\{CreateSubjectController, UpdateSubjectController, DeleteSubjectController};
 use App\Http\Controllers\Api\v1\Admin\Post\Theme\{CreateThemeController, DeleteThemeController, UpdateThemeController};
@@ -38,7 +39,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         Route::prefix('post')->group(function() {
             Route::post('create', [CreatePostController::class, 'create']);
             Route::get('list', [ListPostController::class, 'list']);
-            Route::get('view/{id}', [ViewPostController::class, 'view']);
+            Route::get('view/{id}', [ViewPostController::class, 'view'])->whereNumber('id');
         });
     });
 
@@ -54,6 +55,12 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
             Route::put('update', [UpdateSubjectController::class, 'update']);
             Route::delete('delete', [DeleteSubjectController::class, 'delete']);
 
+        });
+
+        Route::prefix('user')->group(function () {
+            Route::prefix('find')->group(function () {
+                Route::post('userByName', [AdminUserController::class, 'findUserByName']);
+            });
         });
     });
 });

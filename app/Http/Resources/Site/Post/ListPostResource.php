@@ -4,6 +4,7 @@ namespace App\Http\Resources\Site\Post;
 
 use App\Http\Resources\Admin\Post\SubjectResource;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class ListPostResource extends JsonResource
 {
@@ -17,7 +18,7 @@ class ListPostResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
+            'title' => Str::limit($this->title, 50),
             'body' => $this->body,
             'subject' => SubjectResource::make($this->subject), // make - Т.к 1 объект
             'user' => $this->user->name,
