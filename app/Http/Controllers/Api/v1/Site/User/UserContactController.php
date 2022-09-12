@@ -17,23 +17,36 @@ class UserContactController extends Controller
         $this->userContactService = $userContactService;
     }
 
+    /**
+     * Создание контактной информации пользователя
+     *
+     * @param UserContactRequest $request
+     * @return \App\Http\Resources\Site\User\UserContactResource
+     */
     public function createContactUser(UserContactRequest $request)
     {
         return $this->userContactService->createContactUser($request->validated());
     }
 
-    public function deleteContactUser()
+    /**
+     * Обновление контактной информации пользователя
+     *
+     * @param UserContactRequest $request
+     * @return \App\Http\Resources\Site\User\UserContactResource|string
+     */
+    public function updateContactUser(UserContactRequest $request)
     {
-
+        return $this->userContactService->updateContactUser($request->validated());
     }
 
-    public function updateContactUser()
+    /**
+     * Получить контактной информацию пользователя
+     *
+     * @param UserContactRequest $request
+     * @return \App\Http\Resources\Site\User\UserContactResource|string
+     */
+    public function getContactUser($id)
     {
-
-    }
-
-    public function getContactUser()
-    {
-
+        return $this->userContactService->getContactUser($id);
     }
 }

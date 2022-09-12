@@ -51,7 +51,10 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
             });
             Route::get('data/{id}', [UserController::class, 'getDataUser']);
             Route::prefix('contacts')->group(function (){
-                Route::post('create', [UserContactController::class, 'createContactUser']);
+                $Controller = UserContactController::class;
+                Route::post('create', [$Controller, 'createContactUser']);
+                Route::post('update', [$Controller, 'updateContactUser']);
+                Route::get('get/{id}', [$Controller, 'getContactUser']);
             });
         });
     });

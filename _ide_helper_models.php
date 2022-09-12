@@ -74,6 +74,31 @@ namespace App\Models\Site\Post{
 	class Post extends \Eloquent {}
 }
 
+namespace App\Models\Site\User{
+/**
+ * App\Models\Site\User\UserContact
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string|null $gitOrBit
+ * @property string|null $telegram
+ * @property string|null $skype
+ * @property string|null $vk
+ * @property string|null $discord
+ * @method static \Illuminate\Database\Eloquent\Builder|UserContact newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserContact newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserContact query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserContact whereDiscord($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserContact whereGitOrBit($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserContact whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserContact whereSkype($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserContact whereTelegram($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserContact whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserContact whereVk($value)
+ */
+	class UserContact extends \Eloquent {}
+}
+
 namespace App\Models{
 /**
  * App\Models\User
@@ -90,6 +115,8 @@ namespace App\Models{
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Sanctum\PersonalAccessToken[] $tokens
  * @property-read int|null $tokens_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Site\User\UserContact[] $userContact
+ * @property-read int|null $user_contact_count
  * @method static \Database\Factories\UserFactory factory(...$parameters)
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()

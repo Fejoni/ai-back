@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('user_contacts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('gitOrBit')->default('null');
-            $table->string('telegram')->default('null');
-            $table->string('skype')->default('null');
-            $table->string('vk')->default('null');
-            $table->string('discord')->default('null');
+            $table->string('gitOrBit')->nullable();
+            $table->string('telegram')->nullable();
+            $table->string('skype')->nullable();
+            $table->string('vk')->nullable();
+            $table->string('discord')->nullable();
         });
     }
 
