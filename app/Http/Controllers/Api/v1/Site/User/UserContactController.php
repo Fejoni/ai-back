@@ -49,4 +49,5 @@ class UserContactController extends Controller
     {
         return $this->userContactService->getContactUser($id);
     }
+
 }

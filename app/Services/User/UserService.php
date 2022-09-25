@@ -22,10 +22,28 @@ class UserService
         return $user;
     }
 
+    /**
+     * Получить данные определенного пользователя | Сервис
+     *
+     * @param $id
+     * @return UserResource
+     */
     public function getDataUser($id) {
 
         $user = User::query()->where('id', $id)->first();
 
         return UserResource::make($user);
+    }
+
+    /**
+     * Получить данные всех пользователей | Сервис
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function getFullDataUser()
+    {
+        $oUsers = User::all();
+
+        return UserResource::collection($oUsers);
     }
 }

@@ -33,6 +33,7 @@ Route::prefix('test')->group(function () {
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
 
+
     Route::prefix('site')->group(function () {
 
         Route::prefix('aside')->group(function() {
@@ -49,7 +50,9 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
             Route::prefix('find')->group(function () {
                 Route::post('userByName', [UserController::class, 'findUserByName']);
             });
+            Route::get('get/full/data', [UserController::class, 'getFullDataUser']);
             Route::get('data/{id}', [UserController::class, 'getDataUser']);
+
             Route::prefix('contacts')->group(function (){
                 $Controller = UserContactController::class;
                 Route::post('create', [$Controller, 'createContactUser']);

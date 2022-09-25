@@ -31,9 +31,26 @@ class UserController extends Controller
         return UserResource::make($user);
     }
 
+    /**
+     * Получить данные определенного пользователя | Контроллер
+     *
+     * @param $id
+     * @return UserResource
+     */
     public function getDataUser($id)
     {
         return $this->userService->getDataUser($id);
+    }
+
+
+    /**
+     * Получить все данные пользователей | Контроллер
+     *
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
+    public function getFullDataUser()
+    {
+        return $this->userService->getFullDataUser();
     }
 
 }
