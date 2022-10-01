@@ -31,18 +31,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('test')->group(function () {
 });
 
-Route::group(['middleware' => 'auth:sanctum'], function() {
+// Без защиты
+Route::prefix('getData')->group(function () {
+    Route::prefix('aside')->group(function() {
+        Route::get('get', [GetAsideController::class, 'get']);
+    });
+    Route::prefix('post')->group(function() {
+        Route::get('list', [ListPostController::class, 'list']);
+    });
+});
 
+Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::prefix('site')->group(function () {
 
-        Route::prefix('aside')->group(function() {
-            Route::get('get', [GetAsideController::class, 'get']);
-        });
-
         Route::prefix('post')->group(function() {
             Route::post('create', [CreatePostController::class, 'create']);
-            Route::get('list', [ListPostController::class, 'list']);
             Route::get('view/{id}', [ViewPostController::class, 'view'])->whereNumber('id');
         });
 
