@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\Api\v1\Admin\Subject\SubjectController;
 use App\Http\Controllers\Api\v1\Admin\Theme\ThemeController;
+use App\Http\Controllers\Api\v1\Site\Post\PostController;
 use App\Http\Controllers\Api\v1\Site\User\UserContactController;
 use App\Http\Controllers\Api\v1\Admin\Post\Subject\{CreateSubjectController, DeleteSubjectController, UpdateSubjectController};
 use App\Http\Controllers\Api\v1\Admin\Post\Theme\{CreateThemeController, DeleteThemeController, UpdateThemeController};
 use App\Http\Controllers\Api\v1\Site\Aside\GetAsideController;
-use App\Http\Controllers\Api\v1\Site\Post\{CreatePostController, ListPostController, ViewPostController};
+use App\Http\Controllers\Api\v1\Site\RPost\{CreatePostController, ListPostController, ViewPostController};
 use App\Http\Controllers\Api\v1\Site\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -36,9 +37,6 @@ Route::prefix('getData')->group(function () {
     Route::prefix('aside')->group(function() {
         Route::get('get', [GetAsideController::class, 'get']);
     });
-    Route::prefix('post')->group(function() {
-        Route::get('list', [ListPostController::class, 'list']);
-    });
 });
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
@@ -46,8 +44,12 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::prefix('site')->group(function () {
 
         Route::prefix('post')->group(function() {
-            Route::post('create', [CreatePostController::class, 'create']);
-            Route::get('view/{id}', [ViewPostController::class, 'view'])->whereNumber('id');
+            $Controller = PostController::class;
+            Route::post('create', [$Controller, 'create']);
+            Route::group(['excluded_middleware' => 'auth:sanctum'], function () {
+                Route::get('list', [PostController::class, 'list']);
+            });
+            Route::get('view/{id}', [$Controller, 'view'])->whereNumber('id');
         });
 
         Route::prefix('user')->group(function () {

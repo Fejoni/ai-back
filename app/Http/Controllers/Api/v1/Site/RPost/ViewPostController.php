@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\v1\Site\Post;
+namespace App\Http\Controllers\Api\v1\Site\RPost;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Site\Post\ViewPostResource;
