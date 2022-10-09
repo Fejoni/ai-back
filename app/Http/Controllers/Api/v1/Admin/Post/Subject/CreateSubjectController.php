@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Admin\Post\Subject;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Post\Subject\CreateSubjectRequest;
 use App\Models\Admin\Post\Subject;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\Routing\ResponseFactory;
-use Illuminate\Http\Response;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 use function response;
 
@@ -47,14 +43,11 @@ class CreateSubjectController extends Controller
      *      ),
      * )
      */
-
-    public function create(CreateSubjectRequest $request): Response|Application|ResponseFactory
+    public function create($data)
     {
-        $validatedData = $request->validated();
-
         Subject::create([
-            'title' => $request->input('title'),
-            'theme_id' => $request->input('theme_id'),
+            'title' => $data['title'],
+            'theme_id' => $data['theme_id'],
         ]);
 
         return response(null, ResponseAlias::HTTP_NO_CONTENT);

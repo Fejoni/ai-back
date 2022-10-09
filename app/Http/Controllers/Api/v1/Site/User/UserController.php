@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\v1\Site\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Site\User\FindUserRequest;
-use App\Http\Resources\Site\User\UserResource;
+use App\Wttp\Resources\Site\User\UserResource;
 use App\Services\User\UserService;
 
 

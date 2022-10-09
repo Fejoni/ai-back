@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Admin\Subject\SubjectController;
+use App\Http\Controllers\Api\v1\Admin\Theme\ThemeController;
 use App\Http\Controllers\Api\v1\Site\User\UserContactController;
-use App\Http\Controllers\Api\v1\Admin\Post\Subject\{CreateSubjectController,
-    DeleteSubjectController,
-    UpdateSubjectController};
+use App\Http\Controllers\Api\v1\Admin\Post\Subject\{CreateSubjectController, DeleteSubjectController, UpdateSubjectController};
 use App\Http\Controllers\Api\v1\Admin\Post\Theme\{CreateThemeController, DeleteThemeController, UpdateThemeController};
 use App\Http\Controllers\Api\v1\Site\Aside\GetAsideController;
 use App\Http\Controllers\Api\v1\Site\Post\{CreatePostController, ListPostController, ViewPostController};
@@ -68,19 +68,18 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::prefix('admin')->group(function() {
         Route::prefix('theme')->group(function () {
-            Route::post('create', [CreateThemeController::class, 'create']);
-            Route::put('update', [UpdateThemeController::class, 'update']);
-            Route::delete('delete', [DeleteThemeController::class, 'delete']);
+            $Controller = ThemeController::class;
+            Route::post('create', [$Controller, 'create']);
+            Route::put('update', [$Controller, 'update']);
+            Route::delete('delete', [$Controller, 'delete']);
         });
 
         Route::prefix('subject')->group(function () {
-            Route::post('create', [CreateSubjectController::class, 'create']);
-            Route::put('update', [UpdateSubjectController::class, 'update']);
-            Route::delete('delete', [DeleteSubjectController::class, 'delete']);
-
+            $Controller = SubjectController::class;
+            Route::post('create', [$Controller, 'create']);
+            Route::put('update', [$Controller, 'update']);
+            Route::delete('delete', [$Controller, 'delete']);
         });
-
-
     });
 });
 
